@@ -9,15 +9,19 @@ const typeDefs = gql`
     location: String
   }
  
-  type Query {
-    hostels: [Hostel]
-  }
+h
 `;
 
 
 const resolvers = {
   Query: {
-    hostels: () => hostels,
+    hostels:  (root, args) => {
+      const {first, offset} = args; 
+      const result =  offset === undefined ?
+                        hostels.splice(0, first)
+                          : hostels.splice(offset, first);
+      return result;
+    },
   },
 }; 
 
