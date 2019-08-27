@@ -9,7 +9,10 @@ const typeDefs = gql`
     location: String
   }
  
-h
+
+  type Query {
+    hostels (first: Int, offset: Int): [Hostel]
+  }
 `;
 
 
